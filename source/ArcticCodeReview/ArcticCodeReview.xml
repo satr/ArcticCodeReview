@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArcticCodeReview</name>
+    </assembly>
+    <members>
+        <member name="T:ArcticCodeReview.Connect">
+            <summary>The object for implementing an Add-in.</summary>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:ArcticCodeReview.Connect.#ctor">
+            <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
+        </member>
+        <member name="M:ArcticCodeReview.Connect.OnConnection(System.Object,Extensibility.ext_ConnectMode,System.Object,System.Array@)">
+            <summary>Implements the OnConnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being loaded.</summary>
+            <param name="application">Root object of the host application.</param>
+            <param name="connectMode">Describes how the Add-in is being loaded.</param>
+            <param name="addInInst">Object representing this Add-in.</param>
+            <param name="custom"></param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:ArcticCodeReview.Connect.AddReviewComment(Microsoft.VisualStudio.CommandBars.CommandBarButton,System.Boolean@)">
+            <summary>
+                Occurs when the user clicks the AddReviewEntry button.
+            </summary>
+            <param name="ctrl">
+                Denotes the CommandBarButton control that initiated the event.
+            </param>
+            <param name="cancelDefault">
+                False if the default behavior associated with the CommandBarButton control occurs, unless its canceled by another process or add-in.
+            </param>
+        </member>
+        <member name="M:ArcticCodeReview.Connect.OnDisconnection(Extensibility.ext_DisconnectMode,System.Array@)">
+            <summary>Implements the OnDisconnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being unloaded.</summary>
+            <param term='disconnectMode'>Describes how the Add-in is being unloaded.</param>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <param name="disconnectMode"></param>
+            <param name="custom"></param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:ArcticCodeReview.Connect.OnAddInsUpdate(System.Array@)">
+            <summary>Implements the OnAddInsUpdate method of the IDTExtensibility2 interface. Receives notification when the collection of Add-ins has changed.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <param name="custom"></param>
+            <seealso class='IDTExtensibility2' />		
+        </member>
+        <member name="M:ArcticCodeReview.Connect.OnStartupComplete(System.Array@)">
+            <summary>Implements the OnStartupComplete method of the IDTExtensibility2 interface. Receives notification that the host application has completed loading.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <param name="custom"></param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:ArcticCodeReview.Connect.OnBeginShutdown(System.Array@)">
+            <summary>Implements the OnBeginShutdown method of the IDTExtensibility2 interface. Receives notification that the host application is being unloaded.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <param name="custom"></param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:ArcticCodeReview.Connect.QueryStatus(System.String,EnvDTE.vsCommandStatusTextWanted,EnvDTE.vsCommandStatus@,System.Object@)">
+            <summary>Implements the QueryStatus method of the IDTCommandTarget interface. This is called when the command's availability is updated</summary>
+            <param term='commandName'>The name of the command to determine state for.</param>
+            <param term='neededText'>Text that is needed for the command.</param>
+            <param term='status'>The state of the command in the user interface.</param>
+            <param term='commandText'>Text requested by the neededText parameter.</param>
+            <param name="commandName"></param>
+            <param name="neededText"></param>
+            <param name="status"></param>
+            <param name="commandText"></param>
+            <seealso class='Exec' />
+        </member>
+        <member name="M:ArcticCodeReview.Connect.Exec(System.String,EnvDTE.vsCommandExecOption,System.Object@,System.Object@,System.Boolean@)">
+            <summary>Implements the Exec method of the IDTCommandTarget interface. This is called when the command is invoked.</summary>
+            <param name="commandName">The name of the command to execute.</param>
+            <param name="executeOption">Describes how the command should be run</param>
+            <param name="varIn">Parameters passed from the caller to the command handler.</param>
+            <param name="varOut">Parameters passed from the command handler to the caller.</param>
+            <param term='handled'>Informs the caller if the command was handled or not.</param>
+            <seealso class='Exec' />
+        </member>
+        <member name="T:ArcticCodeReview.InputDialog">
+            <summary>
+            Dialog for entering a text
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.InputDialog.#ctor">
+            <summary>
+            Initialize a dialog for entering a text
+            </summary>
+        </member>
+        <member name="F:ArcticCodeReview.InputDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.InputDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ArcticCodeReview.InputDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.InputDialog.InputText">
+            <summary>
+            Entered text
+            </summary>
+        </member>
+        <member name="T:ArcticCodeReview.NonSelectedReviewingFragment">
+            <summary>
+            Fragment with not selected text
+            </summary>
+        </member>
+        <member name="T:ArcticCodeReview.ReviewingFragmentBase">
+            <summary>
+            Review fragment
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewingFragmentBase.Write(System.Text.StringBuilder)">
+            <summary>
+            Write a reviewing fragment to string-builder 
+            </summary>
+            <param name="stringBuilder"></param>
+        </member>
+        <member name="P:ArcticCodeReview.ReviewingFragmentBase.Line">
+            <summary>
+            Line number from which reviewing fragment starts
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.ReviewingFragmentBase.TextDocumentPathInSolution">
+            <summary>
+            Full path of a reviwing document within the solution
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.NonSelectedReviewingFragment.#ctor(EnvDTE.SolutionClass,EnvDTE.TextDocument)">
+            <summary>
+            Initialize an instance of fragment with not selected text
+            </summary>
+            <param name="solution"></param>
+            <param name="textDocument"></param>
+        </member>
+        <member name="M:ArcticCodeReview.NonSelectedReviewingFragment.Write(System.Text.StringBuilder)">
+            <summary>
+            Write the fragment with text to a string-builder
+            </summary>
+            <param name="stringBuilder"></param>
+        </member>
+        <member name="T:ArcticCodeReview.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Message_Add_review_comment__code_or_text_can_be_selected">
+            <summary>
+              Looks up a localized string similar to Add review comment (code or text can be selected).
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Message_Do_you_want_to_clean_the_current_review_and_start_new">
+            <summary>
+              Looks up a localized string similar to Do you want to clean the current review and start new?.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Message_Error_0">
+            <summary>
+              Looks up a localized string similar to Error: {0}.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Message_Error_on_exicution_of_a_command_0_with_a_parameter_1">
+            <summary>
+              Looks up a localized string similar to Error on exicution of a command &quot;{0}&quot; with a parameter &quot;{1}&quot;.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Add_Review_Comment">
+            <summary>
+              Looks up a localized string similar to Add Review Comment.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Comment">
+            <summary>
+              Looks up a localized string similar to Comment.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Error">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_File">
+            <summary>
+              Looks up a localized string similar to File.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Hightlight_with">
+            <summary>
+              Looks up a localized string similar to Hightlight with.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Line">
+            <summary>
+              Looks up a localized string similar to Line.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Set_forecolor">
+            <summary>
+              Looks up a localized string similar to Set forecolor.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.Resources.Title_Warning">
+            <summary>
+              Looks up a localized string similar to Warning.
+            </summary>
+        </member>
+        <member name="T:ArcticCodeReview.ReviewMessageDialog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewMessageDialog.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewMessageDialog.AddReviewFor(ArcticCodeReview.ReviewingFragmentBase)">
+            <summary>
+            
+            </summary>
+            <param name="reviewingFragment"></param>
+        </member>
+        <member name="F:ArcticCodeReview.ReviewMessageDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewMessageDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewMessageDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.ReviewMessageDialog.Hidden">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ArcticCodeReview.ReviewProcessor">
+            <summary>
+             Creates revied dialog and adds review entries to a review
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewProcessor.AddReviewEntry(EnvDTE80.DTE2)">
+            <summary>
+            Add new review entry to a review
+            </summary>
+            <param name="application">Application with activewindow</param>
+        </member>
+        <member name="M:ArcticCodeReview.ReviewProcessor.Dispose">
+            <summary>
+            Disposing of the component
+            </summary>
+        </member>
+        <member name="T:ArcticCodeReview.SelectedReviewingFragment">
+            <summary>
+            Fragment with selected text
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.SelectedReviewingFragment.#ctor(EnvDTE.SolutionClass,EnvDTE.TextDocument)">
+            <summary>
+            Initialize a new instance of a fragment with selected text
+            </summary>
+            <param name="solution">Reviewed solution</param>
+            <param name="textDocument">Reviewed document</param>
+        </member>
+        <member name="M:ArcticCodeReview.SelectedReviewingFragment.Write(System.Text.StringBuilder)">
+            <summary>
+            Write the fragment with selected text to a string-builder
+            </summary>
+            <param name="stringBuilder"></param>
+        </member>
+        <member name="T:ArcticCodeReview.WysiwygEditorControl">
+            <summary>
+            Wysiwyg edition of HTML-document 
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.WysiwygEditorControl.#ctor">
+            <summary>
+            Initialize new instance of WysiwygEditorControl
+            </summary>
+        </member>
+        <member name="F:ArcticCodeReview.WysiwygEditorControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ArcticCodeReview.WysiwygEditorControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ArcticCodeReview.WysiwygEditorControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ArcticCodeReview.WysiwygEditorControl.DocumentText">
+            <summary>
+            Content of HTML-document
+            </summary>
+        </member>
+        <member name="T:ArcticCodeReview.WysiwygEditorControl.WebBrowserCommands">
+            <summary>
+            Command names for execCommand method of HtmlDocument
+            </summary>
+        </member>
+    </members>
+</doc>
